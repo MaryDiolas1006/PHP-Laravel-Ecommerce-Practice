@@ -22,7 +22,7 @@
 				@method('PUT')
 
 				<label for="name">Category name:</label>
-				<input type="text" name=""name id="name" class="form-control form-control-sm" value="{{ $category->name }}">
+				<input type="text" name="name" id="name" class="form-control form-control-sm" value="{{ $category->name }}">
 
 				<button class="btn btn-sm btn-warning mt-2">Edit</button>
 				
