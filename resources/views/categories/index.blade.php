@@ -11,6 +11,9 @@
 		</div>
          {{-- end hearder --}}
 
+         {{-- alert message --}}
+         @includeWhen(Session::has('message'), 'partials.alert')
+
 
          {{-- category list start --}}
 

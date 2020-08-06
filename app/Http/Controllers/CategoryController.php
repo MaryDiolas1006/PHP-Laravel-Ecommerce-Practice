@@ -43,10 +43,11 @@ class CategoryController extends Controller
 
         // shortcut
         $category->name = $request->name;
-
+        
+    
         $category->save();
 
-        return redirect(route('categories.index'));
+        return redirect(route('categories.index'))->with('message', "category {$category->name} is added successfully");
     }
 
     /**
