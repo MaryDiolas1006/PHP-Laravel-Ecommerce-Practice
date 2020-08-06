@@ -42,9 +42,16 @@ class CategoryController extends Controller
         // $category->name = $request->input('name')
 
         // shortcut
-        $category->name = $request->name;
-        
-    
+        // $category->name = $request->name;
+        // $category->save();
+
+        $validatedData = $request->validate([
+
+            'name' => 'required|unique:categories,name'
+
+        ]);
+
+        $category = new Category($validatedData);
         $category->save();
 
         return redirect(route('categories.index'))->with('message', "category {$category->name} is added successfully");
