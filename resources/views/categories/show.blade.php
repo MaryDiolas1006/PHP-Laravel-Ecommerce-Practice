@@ -1,0 +1,23 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h1 class="text-center">
+				View Category
+			</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-sm-6 col-md-8 mx-auto">
+			@include('categories.partials.card')
+		</div>
+	</div>
+</div>
+
+
+@endsection
