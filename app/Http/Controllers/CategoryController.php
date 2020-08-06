@@ -84,7 +84,7 @@ class CategoryController extends Controller
             $category->name = $request->name;
             $category->save();
 
-            return redirect(route('categories.show', $category->id));
+            return redirect(route('categories.show', $category->id))->with('message', "Category is updated successfully");
     }
 
     /**
@@ -97,6 +97,8 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect(route('categories.index'));
+        return redirect(route('categories.index'))
+        ->with('message', "Category has been deleted")
+        ->with('alert', 'warning');
     }
 }

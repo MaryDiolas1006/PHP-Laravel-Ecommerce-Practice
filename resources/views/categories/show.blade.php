@@ -12,6 +12,10 @@
 		</div>
 	</div>
 
+	{{-- alert message --}}
+
+	@includeWhen(Session::has('message'), 'partials.alert')
+
 	<div class="row">
 		<div class="col-12 col-sm-6 col-md-8 mx-auto">
 			@include('categories.partials.card', ['view' => false])
