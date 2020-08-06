@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-2">
 	<div class="card-body">
 		<h4 class="card-title text-center">
 			{{ $category->name }}
@@ -6,8 +6,10 @@
 	</div>
 
 	<div class="card-footer text-center">
+		@if(!isset($view))
 		{{-- view --}}
 		<a href="{{ route('categories.show', $category->id) }}" class="btn btn-success btn-sm mx-2">View</a>
+		@endif
 		{{-- edit --}}
 		<a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm mx-2">Edit</a>
 		{{-- delete --}}

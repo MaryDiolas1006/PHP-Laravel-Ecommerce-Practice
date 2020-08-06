@@ -14,7 +14,7 @@
 
 	<div class="row">
 		<div class="col-12 col-sm-6 col-md-8 mx-auto">
-			@include('categories.partials.card')
+			@include('categories.partials.card', ['view' => false])
 		</div>
 	</div>
 </div>
