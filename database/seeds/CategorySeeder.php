@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
@@ -11,6 +12,23 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        // to put a data in database
+        DB::table('categories')->insert([
+
+          'name' => 'Clothes'
+
+        ]);
+
+        DB::table('categories')->insert([
+
+          'name' => 'Shoes'
+
+        ]);
+
+         DB::table('categories')->insert([
+
+          'name' => 'Watch'
+
+        ]);
     }
 }
