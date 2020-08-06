@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::all()->sortBy('name');
         return view('categories.index')->with('categories', $categories);
     }
 
@@ -36,7 +36,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //query here 
+        //query here. store is the one will accept and save everything to database
+
+        $category = new Category;
+        // $category->name = $request->input('name')
+
+        // shortcut
+        $category->name = $request->name;
+
+        $category->save();
+
+        return redirect(route('categories.index'));
     }
 
     /**
@@ -58,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit')->with('category', $category);
     }
 
     /**
