@@ -33,6 +33,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                         
+
+                         {{-- start admin dropdown --}}
+                        <li class="nav-item dropdown">
+                            <a id="adminDropdown" href="" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Admin</a>
+                            <div class="dropdown-menu">
+
+                                {{-- add category --}}
+                                <a href="{{ route('categories.create') }}" class="dropdown-item">Add Category</a>
+                                {{-- end category --}}
+                            </div>
+                        </li>
+                            {{-- end admin dropdown --}}
+                        
+
+                        {{-- category index --}}
+
+                        <li class="nav-item">
+                            <a href="{{ route('categories.index') }}" class="nav-link">
+                                Categories
+                            </a>
+                        </li>
 
                     </ul>
 
