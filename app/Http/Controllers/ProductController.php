@@ -39,7 +39,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $products = Product::all()->sortBy('name');
+
+        return view('products.index')
+        ->with('products', $products);
+
     }
 
     /**
@@ -50,7 +54,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show')
+            ->with('product', $product);
+
     }
 
     /**

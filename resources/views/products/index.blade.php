@@ -31,21 +31,19 @@
 								<span class="badge badge-info">category</span>
 							</p>
 
-							<form action="" method="post" class="my-2">
-								@csrf
-								<input type="number" name="quantity" id="" class="form-control form-control-sm" min="1" value="1">
-								<button class="btn btn-sm btn-success w-100 mt-1">Add to Cart</button>
-							</form>
-
+							@include('products.partials.add-to-cart')
+							
 							<a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info w-100">View</a>
 						</div>
 						<div class="card-footer">
-							<a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm btn-warning w-100 mb-1"> Edit</a>
-							<form action="{{ route('products.destroy', $product->id) }}" method="post">
-								@csrf
-								@method('DELETE')
-								<button class="btn btn-sm btn-danger w-100">Delete</button>
-							</form>
+							
+							@include('products.partials.edit-btn')
+
+
+
+							@include('products.partials.delete-form')
+
+
 						</div>
 					</div>
 					{{-- product card end --}}
