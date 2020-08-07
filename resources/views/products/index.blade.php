@@ -28,7 +28,9 @@
 								&#8369; {{ number_format($product->price,2) }}
 							</p>
 							<p class="card-text mb-0">
-								<span class="badge badge-info">category</span>
+								<span class="badge badge-info">
+								{{ $product->category->name }}
+								</span>
 							</p>
 
 							@include('products.partials.add-to-cart')

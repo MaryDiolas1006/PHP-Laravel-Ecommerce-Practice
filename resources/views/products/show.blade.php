@@ -21,7 +21,9 @@
 
 				<div class="row">
 					<div class="col-2">Category</div>
-					<div class="col"><span class="badge badge-info">Category</span></div>
+					<div class="col"><span class="badge badge-info">
+						{{ $product->category->name }}
+					</span></div>
 				</div>
 
 
