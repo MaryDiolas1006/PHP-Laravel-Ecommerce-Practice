@@ -45,7 +45,6 @@
 
                                 {{-- add product --}}
                                     
-                                    <a href="{{ route('products.create') }}" class="dropdown-item">Add Product</a>
 
                                 {{-- end category --}}
                             </div>
