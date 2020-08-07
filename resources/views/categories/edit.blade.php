@@ -10,8 +10,20 @@
 			</h1>
 		</div>
 	</div>
-     
 
+	{{-- error message alert --}}
+     
+    {{-- @if ($errors->any())
+	<div class="alert alert-danger">
+		<ul>
+			@foreach ($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	</div>
+	@endif --}}
+
+	{{-- end error message alert --}}
 
 	<div class="row">
 		<div class="col-12 col-md-6 mx-auto">
@@ -23,7 +35,23 @@
 				@method('PUT')
 
 				<label for="name">Category name:</label>
-				<input type="text" name="name" id="name" class="form-control form-control-sm" value="{{ $category->name }}">
+				<input 
+				type="text" 
+				name="name" 
+				id="name" 
+				class="form-control form-control-sm @error('name') is-invalid @enderror" 
+				value="{{ $category->name }}" 
+				autofucos
+				autocomplete="name"
+				required
+				>
+				{{-- error message alert --}}
+				@error('name')
+					<small class="d-block invalid-feedback">
+						<strong>{{$message}}</strong>
+					</small>
+				@enderror
+				{{-- end error alert --}}
 
 				<button class="btn btn-sm btn-warning mt-2">Edit</button>
 				
