@@ -42,6 +42,11 @@
 
                                 {{-- add category --}}
                                 <a href="{{ route('categories.create') }}" class="dropdown-item">Add Category</a>
+
+                                {{-- add product --}}
+                                    
+                                    <a href="{{ route('products.create') }}" class="dropdown-item">Add Product</a>
+
                                 {{-- end category --}}
                             </div>
                         </li>
@@ -53,6 +58,13 @@
                         <li class="nav-item">
                             <a href="{{ route('categories.index') }}" class="nav-link">
                                 Categories
+                            </a>
+                        </li>
+
+                        {{-- product index --}}
+                        <li class="nav-iten">
+                            <a href="{{ route('products.index') }}" class="nav-link">
+                                Products
                             </a>
                         </li>
 
