@@ -40,10 +40,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-         $products = Product::all()->sortBy('name');
+         // $products = Product::all()->sortBy('name');
 
-        return view('products.index')
-        ->with('products', $products);
+        // create validation
+
+        $validatedData = $request->validate([
+
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'category_id' => 'required',
+            'image' => 'required|image|max:2000'
+        ]);
+
+        // create new data entry
+
+        $product = new Product($validatedData);
+
+        // save the product
+        $product->save();
+
+        return redirect(route('products.show', $product->id))
+        ->with('message', "Product is added successfully");
+        
 
     }
 

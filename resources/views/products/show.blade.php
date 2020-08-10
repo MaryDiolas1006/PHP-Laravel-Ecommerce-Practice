@@ -2,6 +2,9 @@
 
 @section('content')
 	<div class="container">
+
+		@includeWhen(Session::has('message'), 'partials.alert')
+
 		<div class="row">
 			<div class="col-12 col-md-4">
 				<img src="{{ $product->image }}" alt="" class="w-100">
