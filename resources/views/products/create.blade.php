@@ -87,4 +87,19 @@
 	</div>
 
 
+	{{-- JS way of saving images in database --}}
+
+{{-- /* console.log(get_current_url); */
+if (get_current_url === "/products/create") {
+
+    var image_file = document.getElementById("image");
+    image_file.setAttribute("onchange", "previewFile()");
+
+} else {
+
+} --}}
+
+
+</script>
+{{-- End Show Image Script --}}
 @endsection

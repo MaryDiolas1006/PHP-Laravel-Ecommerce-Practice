@@ -16,6 +16,8 @@
 
 
 	"
+
+	value="{{ isset($value) ?  $value : ''}}"
 	autofocus>
 
 	@error($name)

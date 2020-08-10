@@ -97,7 +97,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit')
+        ->with('product', $product)
+        ->with('categories', Category::all());
     }
 
     /**
@@ -109,7 +111,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        
     }
 
     /**
@@ -120,6 +122,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        
     }
 }
