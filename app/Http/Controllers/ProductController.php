@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -53,9 +54,18 @@ class ProductController extends Controller
             'image' => 'required|image|max:2000'
         ]);
 
+        // save the image after validation
+        $path = $request->file('image')->store('public/products');
+
+        // this will return the url of the saved image
+        $url = Storage::url($path);
+
         // create new data entry
 
         $product = new Product($validatedData);
+
+        // assign the value of product image
+        $product->image = $url;
 
         // save the product
         $product->save();
