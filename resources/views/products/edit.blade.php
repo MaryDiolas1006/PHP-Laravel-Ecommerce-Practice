@@ -137,7 +137,7 @@
 
 					{{-- start description --}}
 					<label for="description">Product description</label>
-					<textarea name="description" id="description" cols="30" rows="10" class="form-control form-control-sm">{{$product->description}}</textarea>
+					<textarea name="description" id="description" cols="30" rows="10" class="form-control form-control-sm @error('description') is-invalid @enderror )">{{$product->description}}</textarea>
 					@error('description')
 						<small class="d-block invalid-feedback">
 							<strong>							

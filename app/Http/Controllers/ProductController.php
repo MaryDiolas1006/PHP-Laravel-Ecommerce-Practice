@@ -111,7 +111,40 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        
+         $validatedData = $request->validate([
+
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'category_id' => 'required',
+            'image' => 'image|max:2000'
+        ]);
+            
+            // update product
+         $product->update($validatedData);
+
+         // check if there's image uploaded.
+         // if there's and image, save it and get the url
+         if($request->hasFile('image')){
+
+            // store the image
+            $path = $request->file('image')->store('public/products');
+
+        // this will return the url of the saved image
+            $url = Storage::url($path);
+
+            // set the new url image
+            $product->image = $url;
+         }
+
+
+         // save product
+         $product->save();
+
+         return redirect(route('products.show', $product->id))
+            ->with('message', "Product is updated successfully");
+
+
     }
 
     /**
