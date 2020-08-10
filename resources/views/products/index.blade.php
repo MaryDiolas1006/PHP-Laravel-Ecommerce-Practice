@@ -12,6 +12,9 @@
 		</div>
 		{{-- header end --}}
 
+		{{-- alert message --}}
+		@includeWhen(Session::has('message'), 'partials.alert')
+
 		{{-- products section start --}}
 		<div class="row">
 
