@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -13,8 +14,46 @@ class CartController extends Controller
      */
     public function index()
     {
-        dd(session('cart'));
-        return view('carts.index');
+        // $cart = [
+        //     id => qty
+        // ]
+
+        // $products = [
+        //     [
+        //         id = 3,
+        //         name => Mouse
+        //     ]
+        //      [
+        //         id = 3,
+        //         name => Cat
+        //     ]
+        // ]
+        // dd(session('cart'));
+        $products = Product::find(array_keys(session('cart')));
+        $total = 0;
+
+        // add the subtotal and compute for total price
+
+        foreach($products as $product) {
+            // insert quntity property
+            $product->quantity = session("cart.$product->id");
+
+            // compute and insert for subtotal property
+            $product->subtotal = $product->price * $product->quantity;
+
+            // update total price
+            $total += $product->subtotal;
+        }
+
+        // foreach(session('cart') as $id => $value) {
+        //     $product = Product::find($id);
+        //     $product->quantity = session("cart.$id");
+        //     $product->subtotal = $product->price * $product->quantity;
+        //     $products[] = $product;
+        //     $total += $product->subtotal;
+        // }
+        return view('carts.index')->with('products', $products)
+            ->with('total', $total);
     }
 
     /**

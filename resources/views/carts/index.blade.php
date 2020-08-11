@@ -39,21 +39,23 @@
                     </thead>
                     <tbody>
                         {{-- start item row --}}
+                        @foreach($products as $product)
                         <tr>
-                            <td scope="row">$product->name</td>
-                            <td>$product->quantity</td>
-                            <td>&#8369; $product->price</td>
-                            <td>&#8369; $product->subtotal</td>
+                            <td scope="row">{{$product->name}}</td>
+                            <td>{{$product->quantity}}</td>
+                            <td>&#8369; {{number_format($product->price,2)}}</td>
+                            <td>&#8369; {{number_format($product->subtotal,2)}}</td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-outline-danger">Remove</a>
                             </td>
                         </tr>
+                        @endforeach
                         {{-- end item row --}}
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="3" class="text-right">Total</td>
-                            <td><strong>&#8369; $total</strong></td>
+                            <td><strong>&#8369; {{number_format($total,2)}}</strong></td>
                             <td>
                                 <a href="#" class="btn btn-sm w-100 btn-success">Checkout</a>
                                 <a href="#" class="btn btn-sm btn-success w-100 my-1">Login to checkout</a>
