@@ -55,14 +55,14 @@
 
                         {{-- category index --}}
 
-                        <li class="nav-item">
+                        <li class="nav-item {{Route::CurrentRouteNamed('categories.index') ? "active" : ""}}">
                             <a href="{{ route('categories.index') }}" class="nav-link">
                                 Categories
                             </a>
                         </li>
 
                         {{-- product index --}}
-                        <li class="nav-iten">
+                        <li class="nav-item {{Route::CurrentRouteNamed('products.index') ? "active" : ""}}">
                             <a href="{{ route('products.index') }}" class="nav-link">
                                 Products
                             </a>

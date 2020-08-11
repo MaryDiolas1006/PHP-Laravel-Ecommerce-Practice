@@ -13,6 +13,7 @@ class CartController extends Controller
      */
     public function index()
     {
+        dd(session('cart'));
         return view('carts.index');
     }
 
@@ -68,7 +69,32 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+               
+        // first vaidate the quantity input
+        $request->validate([
+
+            'quantity' => 'required|integer|min:1'
+        ]);
+
+
+        // Route::put('/cart/{id}', function)
+        // there's we go the id
+        $quantity = $request->quantity;
+
+        // to get id
+        // $productId = $id;
+
+
+        // store to session
+        // $cart = [
+        //     id => quantity
+        // ]
+
+        $request->session()->put("cart.$id", $quantity);
+
+        // session('cart');
+
+        return redirect(route('cart.index'));
     }
 
     /**

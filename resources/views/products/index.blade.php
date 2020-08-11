@@ -15,6 +15,13 @@
 		{{-- alert message --}}
 		@includeWhen(Session::has('message'), 'partials.alert')
 
+		@error('quantity')
+		<div class="alert alert-danger">
+			{{$message}}
+		</div>
+
+		@enderror
+
 		{{-- products section start --}}
 		<div class="row">
 
