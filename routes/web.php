@@ -27,5 +27,6 @@ Route::resource('/categories', 'CategoryController');
 
 Route::resources([
 	'categories' => 'CategoryController',
-	'products' => 'ProductController'
+	'products' => 'ProductController',
+	'cart' => 'CartController'
 ]);

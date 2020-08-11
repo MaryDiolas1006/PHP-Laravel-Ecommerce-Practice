@@ -72,6 +72,17 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        {{-- cart start --}}
+                        <li class="nav-item {{Route::CurrentRouteNamed('cart.index') ? "active" : ""}}">
+                            <a href="{{route('cart.index')}}" class="nav-link">
+                                Cart
+                                <span class="badge badge-primary">0</span>
+                            </a>
+                        </li>
+
+
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
