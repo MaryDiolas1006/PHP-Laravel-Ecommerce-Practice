@@ -33,8 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        
                          
-
+                            @can('isAdmin')
                          {{-- start admin dropdown --}}
                         <li class="nav-item dropdown">
                             <a id="adminDropdown" href="" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Admin</a>
@@ -60,6 +61,7 @@
                                 Categories
                             </a>
                         </li>
+                        @endcan
 
                         {{-- product index --}}
                         <li class="nav-item {{Route::CurrentRouteNamed('products.index') ? "active" : ""}}">
@@ -73,13 +75,24 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        
                         {{-- cart start --}}
-                        <li class="nav-item {{Route::CurrentRouteNamed('cart.index') ? "active" : ""}}">
-                            <a href="{{route('cart.index')}}" class="nav-link">
-                                Cart
-                                <span class="badge badge-primary">0</span>
-                            </a>
-                        </li>
+                        @cannot('isAdmin')
+                            <li 
+                                class="
+                                    nav-item 
+                                    {{ Route::CurrentRouteNamed('cart.index') ? "active" : "" }}
+                                "
+                            >
+                                <a href="{{route('cart.index')}}" class="nav-link">
+                                    Cart 
+                                    <span class="badge badge-primary">
+                                        {{ Session::has('cart') ? count(Session::get('cart')) : 0 }}
+                                    </span>
+                                </a>
+                            </li>
+                        @endcannot
+
 
 
 
