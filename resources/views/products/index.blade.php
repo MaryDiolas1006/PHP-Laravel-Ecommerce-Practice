@@ -37,7 +37,7 @@
 							<p class="card-text mb-0">
 								&#8369; {{ number_format($product->price,2) }}
 							</p>
-							<p class="card-text mb-0">
+							<p class="card-text mb-2">
 								<span class="badge badge-info">
 								{{ $product->category->name }}
 								</span>
@@ -47,14 +47,17 @@
 							
 							<a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info w-100">View</a>
 						</div>
+
+						@can('isAdmin')
 						<div class="card-footer">
+							
 							
 							@include('products.partials.edit-btn')
 
 
 
 							@include('products.partials.delete-form')
-
+							@endcan
 
 						</div>
 					</div>

@@ -39,7 +39,7 @@
 					<div class="col"><h3>&#8369;{{ number_format($product->price, 2) }}</h3></div>
 				</div>
 				{{-- end price --}}
-
+                 @cannot('isAdmin')
 				{{-- add to cart start --}}
 				<div class="row my-2">
 					<div class="col col-sm-6 col-md-3">
@@ -48,6 +48,9 @@
 				</div>
 
 				{{-- add to cart end --}}
+				@endcannot
+
+				@can('isAdmin')
 
 				{{-- admin btns start --}}
 
@@ -71,6 +74,7 @@
 				{{-- delete end --}}
 				</div>
 				{{-- admin btns end --}}
+				@endcan
 			</div>
 		</div>
 	</div>
