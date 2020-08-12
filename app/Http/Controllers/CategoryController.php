@@ -14,6 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
+         $this->authorize('viewAny', Category::class);
+
         $categories = Category::all()->sortBy('name');
         return view('categories.index')->with('categories', $categories);
     }
@@ -25,6 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Category::class);
         return view('categories.create');
     }
 
@@ -36,6 +39,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->authorize('create', Category::class);
         //query here. store is the one will accept and save everything to database
 
         $category = new Category;
@@ -65,6 +70,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        $this->authorize('view', $category);
         return view('categories.show')->with('category', $category);
     }
 
@@ -76,6 +82,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        $this->authorize('update', $category);
         return view('categories.edit')->with('category', $category);
     }
 
@@ -88,6 +95,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $this->authorize('update', $category);
             // $category->name = $request->name;
 
             $validatedData = $request->validate([
@@ -110,6 +118,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete', $category);
         $category->delete();
 
         return redirect(route('categories.index'))
