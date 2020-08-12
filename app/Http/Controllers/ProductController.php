@@ -30,6 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
+          // only authorize role id can touch spicific button or page
+        $this->authorize('create', Product::class);
         return view('products.create')->with('categories', Category::all());
     }
 
@@ -40,7 +42,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // only authorize role id can touch spicific button or page
+        $this->authorize('create', Product::class);
          // $products = Product::all()->sortBy('name');
 
         // create validation
@@ -97,6 +101,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+         // only authorize role id can touch spicific button or page
+        $this->authorize('update', $product);
         return view('products.edit')
         ->with('product', $product)
         ->with('categories', Category::all());
@@ -111,6 +117,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+         // only authorize role id can touch spicific button or page
+         $this->authorize('update', $product);
          $validatedData = $request->validate([
 
             'name' => 'required|string',
@@ -155,6 +163,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+         // only authorize role id can touch spicific button or page
+        $this->authorize('delete', $product);
         $product->delete();
 
         return redirect(route('products.index'))
