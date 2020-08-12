@@ -86,8 +86,13 @@
                             <td colspan="3" class="text-right">Total</td>
                             <td><strong>&#8369; {{number_format($total,2)}}</strong></td>
                             <td>
-                                <a href="#" class="btn btn-sm w-100 btn-success">Checkout</a>
+                                {{-- authorization --}}
+                                @guest
                                 <a href="#" class="btn btn-sm btn-success w-100 my-1">Login to checkout</a>
+                                @else
+                                <a href="#" class="btn btn-sm w-100 btn-success">Checkout</a>
+                                @endguest
+
                             </td>
                         </tr>
                     </tfoot>
