@@ -88,9 +88,9 @@
                             <td>
                                 {{-- authorization --}}
                                 @guest
-                                <a href="#" class="btn btn-sm btn-success w-100 my-1">Login to checkout</a>
+                                <a href="{{route(('login'))}}" class="btn btn-sm btn-success w-100 my-1">Login to checkout</a>
                                 @else
-                                <a href="#" class="btn btn-sm w-100 btn-success">Checkout</a>
+                                <a href="{{route('transactions.store')}}" class="btn btn-sm w-100 btn-success">Checkout</a>
                                 @endguest
 
                             </td>

@@ -30,5 +30,6 @@ Route::delete('/cart', 'CartController@clear')->name('cart.clear');
 Route::resources([
 	'categories' => 'CategoryController',
 	'products' => 'ProductController',
-	'cart' => 'CartController'
+	'cart' => 'CartController',
+	
 ]);
