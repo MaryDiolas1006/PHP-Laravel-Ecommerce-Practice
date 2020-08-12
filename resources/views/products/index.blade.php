@@ -48,9 +48,9 @@
 							<a href="{{ route('products.show', $product->id) }}" class="btn btn-sm btn-info w-100">View</a>
 						</div>
 
-						@can('isAdmin')
+						
 						<div class="card-footer">
-							
+							@can('isAdmin')
 							
 							@include('products.partials.edit-btn')
 

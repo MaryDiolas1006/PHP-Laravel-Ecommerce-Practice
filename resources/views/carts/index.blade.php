@@ -90,7 +90,12 @@
                                 @guest
                                 <a href="{{route(('login'))}}" class="btn btn-sm btn-success w-100 my-1">Login to checkout</a>
                                 @else
-                                <a href="{{route('transactions.store')}}" class="btn btn-sm w-100 btn-success">Checkout</a>
+                                <form action="{{route('transactions.store')}}" method="post">
+                                    @csrf
+                                    
+                                <button  class="btn btn-sm w-100 btn-success">Checkout</button>
+
+                                </form>
                                 @endguest
 
                             </td>

@@ -31,5 +31,5 @@ Route::resources([
 	'categories' => 'CategoryController',
 	'products' => 'ProductController',
 	'cart' => 'CartController',
-	
+	'transactions' => 'TransactionController'
 ]);

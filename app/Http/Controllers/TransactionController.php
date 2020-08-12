@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use Illuminate\Http\Request;
+use Str;
+use Auth;
 
 class TransactionController extends Controller
 {
@@ -35,7 +37,20 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // get the details needed
+        $transaction = new Transaction;
+
+        // transaction_code
+        $transaction->transaction_code = strtoupper(Str::random(10));
+
+        // total
+        $transaction->total = 0;
+
+        // user_id
+        $transaction->user_id = Auth::user()->id;
+
+        // save transaction to database
+        $transaction->save();
     }
 
     /**
