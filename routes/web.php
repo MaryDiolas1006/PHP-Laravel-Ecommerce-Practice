@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/categories', 'CategoryController');
 
+Route::delete('/cart', 'CartController@clear')->name('cart.clear');
+
 
 Route::resources([
 	'categories' => 'CategoryController',

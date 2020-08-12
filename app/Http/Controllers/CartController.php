@@ -14,6 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
+         if (session()->has('cart')) {
         // $cart = [
         //     id => qty
         // ]
@@ -54,7 +55,11 @@ class CartController extends Controller
         // }
         return view('carts.index')->with('products', $products)
             ->with('total', $total);
+
+    }else{
+         return view('carts.index');
     }
+ }
 
     /**
      * Show the form for creating a new resource.
@@ -144,6 +149,22 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+         session()->forget("cart.$id");
+
+        // check if session cart is empty
+        if (count(session()->get('cart')) === 0) {
+            session()->forget('cart');
+        }
+
+        return back();
+
     }
+
+     public function clear()
+    {
+        session()->forget('cart');
+
+        return back();
+    }
+
 }
