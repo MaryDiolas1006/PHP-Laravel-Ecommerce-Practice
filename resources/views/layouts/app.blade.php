@@ -74,6 +74,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        
+                        li.nav-link
+
 
                         
                         {{-- cart start --}}
