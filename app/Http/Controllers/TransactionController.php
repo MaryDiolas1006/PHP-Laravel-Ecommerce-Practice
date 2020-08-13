@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Product;
 use Illuminate\Http\Request;
 use Str;
 use Auth;
@@ -51,6 +52,32 @@ class TransactionController extends Controller
 
         // save transaction to database
         $transaction->save();
+
+        // populate the pivot table
+        // query to database to get the products
+        $products = Product::find(array_keys(session('cart')));
+
+        // compute the subtotal
+        foreach($products as $product) {
+            $product->quantity = session("cart.$product->id");
+            $product->subtotal = $product->price * $product->quantity;
+            $transaction->total += $product->subtotal;
+
+        // query to database (product_transaction)
+            $transaction->products()->attach($product->id, [
+
+                'quantity' => $product->quantity,
+                'subtotal' => $product->subtotal,
+                'price' => $product->price
+            ]);
+        }
+
+        $transaction->save();
+
+        // this will clear cart
+        session()->forget('cart');
+
+        return redirect(route('transactions.show', $transaction->id));
     }
 
     /**
