@@ -16,8 +16,46 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {    
+
+
+        // $products = Product::find(array_keys(session('cart')));
+        // $total = 0;
+
+        // // add the subtotal and compute for total price
+
+        // foreach($products as $product) {
+        //     // insert quntity property
+        //     $product->quantity = session("cart.$product->id");
+
+        //     // compute and insert for subtotal property
+        //     $product->subtotal = $product->price * $product->quantity;
+
+        //     // update total price
+        //     $total += $product->subtotal;
+        // }
+
+        
+        // return view('transactions.index')
+       
+
+        // foreach(session('transactions') as $id => $value) {
+        //     $transaction = Transaction::find($id);
+        //     $transaction->transaction_code = session("transaction.$id");
+        //     $transaction->user_id = $user->id;
+        //     $transaction->payment_mode_id = $payment_modes->id;
+        //     $transaction->status_id = $statuses->id;
+        //     $transaction->total = $statuses->id;
+
+        // }
+         
+
+
+
+            // return view('transactions.index');
+
+         
+
     }
 
     /**
@@ -88,7 +126,26 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        // $products = Product::find(array_keys(session('cart')));
+        // $total = 0;
+
+        // // add the subtotal and compute for total price
+
+        // foreach($products as $product) {
+        //     // insert quntity property
+        //     $product->quantity = session("cart.$product->id");
+
+        //     // compute and insert for subtotal property
+        //     $product->subtotal = $product->price * $product->quantity;
+
+        //     // update total price
+        //     $total += $product->subtotal;
+        
+
+        
+        return view('transactions.show')->with('transaction', $transaction);
+            
+
     }
 
     /**
