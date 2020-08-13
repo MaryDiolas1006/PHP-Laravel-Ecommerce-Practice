@@ -75,7 +75,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         
-                        li.nav-link
+                        {{-- start transactions --}}
+                        <li class="nav-item">
+                            <a href="{{route('transactions.index')}}" class="nav-link">Transactions</a>
+                        </li>
+                        {{-- end transactions --}}
 
 
                         

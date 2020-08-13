@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use App\Product;
+use App\Status;
 use Illuminate\Http\Request;
 use Str;
 use Auth;
@@ -20,10 +21,13 @@ class TransactionController extends Controller
 
 
        $transactions = Transaction::all();
+       $statuses = Status::all();
 
 
 
-        return view('transactions.index')->with('transactions', $transactions);
+        return view('transactions.index')
+            ->with('transactions', $transactions)
+            ->with('statuses', $statuses);
 
          
 
@@ -97,10 +101,13 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-               
+                $statuses = Status::all();
+
 
         
-        return view('transactions.show')->with('transaction', $transaction);
+        return view('transactions.show')
+            ->with('transaction', $transaction)
+            ->with('statuses', $statuses);
             
 
     }
@@ -125,7 +132,11 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $transaction->status_id = $request->status_id;
+
+        $transaction->save();
+
+        return back();
     }
 
     /**
